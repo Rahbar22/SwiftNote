@@ -1,0 +1,28 @@
+.main{
+    min-height: 83vh;
+    display: flex;
+    align-items: center;
+}
+
+.buttonContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.landingbutton {
+    width: 200px;
+    height: 55px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .buttonContainer {
+      padding: 0 200px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .title {
+      font-size: 60px;
+    }
+  }
