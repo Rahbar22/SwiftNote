@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
 
-if(process.env.NODE_ENV=='PRODUCTION'){
+if(process.env.NODE_ENV==='PRODUCTION'){
     app.use(express.static(path.join(__dirname, "/frontend/build")));
 
     app.get("*", function (req, res) {
