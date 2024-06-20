@@ -24,6 +24,12 @@ app.use('/api/notes', noteRoutes);
 app.use(notFound)
 app.use(errorHandler)
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
