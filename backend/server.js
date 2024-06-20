@@ -19,16 +19,16 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/notes', noteRoutes);
 
-app.use(notFound)
-app.use(errorHandler)
-
 if(process.env.NODE_ENV=='PRODUCTION'){
     app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+    });
 }
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-});
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000;
 
