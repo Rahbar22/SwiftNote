@@ -12,7 +12,6 @@ const path = require('path');
 dotenv.config();
 connectDB();
 
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use(express.json());
@@ -23,7 +22,9 @@ app.use('/api/notes', noteRoutes);
 app.use(notFound)
 app.use(errorHandler)
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+if(process.env.NODE_ENV=='PRODUCTION'){
+    app.use(express.static(path.join(__dirname, "../frontend/build")));
+}
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
