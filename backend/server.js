@@ -9,7 +9,6 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const noteController = require('./controllers/noteController')
 const cors = require('cors');
 const path = require('path');
-
 dotenv.config();
 connectDB();
 
@@ -27,7 +26,7 @@ app.use(errorHandler)
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
